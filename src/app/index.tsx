@@ -42,7 +42,7 @@ function BotonAccion({
   color,
   onPress,
 }: {
-  icono: string;
+  icono: number;
   titulo: string;
   detalle: string;
   color: string;
@@ -53,7 +53,7 @@ function BotonAccion({
       style={({ pressed }) => [styles.botonAccion, { backgroundColor: color }, pressed && styles.pressed]}
       onPress={onPress}
     >
-      <Text style={styles.botonIcono}>{icono}</Text>
+      <Image source={icono} style={styles.botonIcono} />
       <Text style={styles.botonTitulo}>{titulo}</Text>
       <Text style={styles.botonDetalle}>{detalle}</Text>
       <Text style={styles.botonFlecha}>↗</Text>
@@ -128,14 +128,14 @@ export default function Inicio() {
 
       <View style={styles.botonesPrincipales}>
         <BotonAccion
-          icono="▣"
+          icono={require("@/assets/images/catalogo.png")}
           titulo="Catálogo"
           detalle="Celulares"
           color="#14213D"
           onPress={() => router.push("/imagenes")}
         />
         <BotonAccion
-          icono="%"
+          icono={require("@/assets/images/promociones.png")}
           titulo="Promociones"
           detalle="Ofertas Nova"
           color="#F07828"
@@ -145,7 +145,7 @@ export default function Inicio() {
 
       <View style={styles.botonCentrado}>
         <BotonAccion
-          icono="⌖"
+          icono={require("@/assets/images/contacto.png")}
           titulo="Contacto"
           detalle="Habla con un asesor"
           color="#4C6FFF"
@@ -306,9 +306,9 @@ const styles = StyleSheet.create({
   },
 
   botonIcono: {
-    color: "#FFFFFF",
-    fontSize: 23,
-    fontWeight: "800",
+    width: 27,
+    height: 27,
+    resizeMode: "contain",
   },
 
   botonTitulo: {
